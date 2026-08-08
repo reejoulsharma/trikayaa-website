@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0a0a0a"/>
+  <text x="32" y="45" font-family="Poppins, Arial, sans-serif" font-size="40" font-weight="600" fill="#f5811f" text-anchor="middle">T</text>
+  <path d="M36 20 L28 32 L36 44" stroke="#ed1c24" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+</svg>
