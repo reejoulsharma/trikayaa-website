@@ -29,28 +29,59 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => el.classList.add('visible'));
   }
 
-  /* Gallery placeholder lightbox */
+  /* Gallery lightbox — shows the real photo/video when available, otherwise a placeholder note */
   const lightbox = document.getElementById('lightbox');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxBody = document.getElementById('lightbox-body');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxVideo = document.getElementById('lightbox-video');
+  const lightboxIcon = document.querySelector('.lightbox .ph-icon-lg');
+  const lightboxCard = document.querySelector('.lightbox-card');
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    if (lightboxVideo) { lightboxVideo.pause(); lightboxVideo.removeAttribute('src'); lightboxVideo.load(); }
+  };
   document.querySelectorAll('[data-lightbox]').forEach(tile => {
     tile.addEventListener('click', () => {
       if (!lightbox) return;
       const title = tile.getAttribute('data-title') || 'Media placeholder';
+      const image = tile.getAttribute('data-image');
+      const video = tile.getAttribute('data-video');
       const isVideo = tile.classList.contains('video');
       lightboxTitle.textContent = title;
-      lightboxBody.textContent = isVideo
-        ? 'This is a placeholder for a performance video. Drop an .mp4 or embed a YouTube/Vimeo link here once footage is ready.'
-        : 'This is a placeholder for a photo. Replace it with real production or studio photography once available.';
+      lightboxImg.style.display = 'none';
+      if (lightboxVideo) { lightboxVideo.style.display = 'none'; lightboxVideo.pause(); }
+      if (video && lightboxVideo) {
+        lightboxVideo.src = video;
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.load();
+        lightboxVideo.play().catch(() => {});
+        lightboxIcon.style.display = 'none';
+        lightboxBody.textContent = '';
+        lightboxCard.classList.add('has-image');
+      } else if (image) {
+        lightboxImg.src = image;
+        lightboxImg.alt = title;
+        lightboxImg.style.display = 'block';
+        lightboxIcon.style.display = 'none';
+        lightboxBody.textContent = '';
+        lightboxCard.classList.add('has-image');
+      } else {
+        lightboxIcon.style.display = 'flex';
+        lightboxBody.textContent = isVideo
+          ? 'This is a placeholder for a performance video. Drop an .mp4 or embed a YouTube/Vimeo link here once footage is ready.'
+          : 'This is a placeholder for a photo. Replace it with real production or studio photography once available.';
+        lightboxCard.classList.remove('has-image');
+      }
       lightbox.classList.add('open');
     });
   });
   document.querySelectorAll('[data-lightbox-close]').forEach(btn => {
-    btn.addEventListener('click', () => lightbox.classList.remove('open'));
+    btn.addEventListener('click', closeLightbox);
   });
   if (lightbox) {
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('open');
+      if (e.target === lightbox) closeLightbox();
     });
   }
 
