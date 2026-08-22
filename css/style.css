@@ -388,55 +388,6 @@ footer .logo .logo-mark { font-size: 1.3rem; }
 .filter-btn:hover { border-color: var(--orange); color: var(--orange); }
 .filter-btn.active { background: var(--orange); border-color: var(--orange); color: var(--black); }
 
-/* ---------- Cards (themes / classes / shows) ---------- */
-.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.card-grid.two { grid-template-columns: repeat(2, 1fr); }
-.info-card {
-  border: 1px solid var(--line);
-  background: var(--black-soft);
-  overflow: hidden;
-  transition: border-color .25s ease, transform .25s ease;
-}
-.info-card:hover { border-color: var(--orange); transform: translateY(-4px); }
-.info-card .placeholder { aspect-ratio: 4/3; border-radius: 0; }
-.info-card .info-body { padding: 26px 28px 30px; }
-.info-card .info-body .tag { display:block; color: var(--orange); font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
-.info-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
-.info-card p { color: var(--muted); font-size: .93rem; margin-bottom: 0; }
-.info-card .meta { display:flex; gap: 14px; margin-top: 16px; font-size: .78rem; color: var(--muted); flex-wrap: wrap; }
-.info-card .meta span { display:flex; align-items:center; gap:6px; }
-
-/* ---------- Timeline (upcoming performances) ---------- */
-.show-list { border-top: 1px solid var(--line); }
-.show-row {
-  display: grid;
-  grid-template-columns: 110px 1fr auto auto;
-  align-items: center;
-  gap: 24px;
-  padding: 26px 0;
-  border-bottom: 1px solid var(--line);
-}
-.show-row .date-block {
-  background: var(--charcoal);
-  border: 1px solid var(--line);
-  text-align: center;
-  padding: 12px 8px;
-  border-radius: var(--radius);
-}
-.show-row .date-block .day { font-size: 1.5rem; font-family: var(--font-display); color: var(--orange); font-weight: 600; line-height: 1; }
-.show-row .date-block .mon { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
-.show-row h4 { margin-bottom: 4px; font-size: 1.1rem; }
-.show-row .venue { color: var(--muted); font-size: .88rem; }
-.show-row .tag-pill {
-  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
-  border: 1px solid var(--orange); color: var(--orange);
-  padding: 5px 12px; border-radius: 999px; white-space: nowrap; justify-self: start;
-}
-@media (max-width: 720px) {
-  .show-row { grid-template-columns: 80px 1fr; }
-  .show-row .tag-pill, .show-row .btn { grid-column: 1 / -1; justify-self: start; margin-top: 8px; }
-}
-
 /* ---------- Booking / contact forms ---------- */
 .book-wrap {
   display: grid;
@@ -608,7 +559,6 @@ footer { background: var(--black-soft); border-top: 1px solid var(--line); paddi
   .director-bio { text-align: center; }
   .pillars { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; gap: 46px; }
-  .card-grid { grid-template-columns: repeat(2, 1fr); }
   .media-grid { grid-template-columns: repeat(2, 1fr); }
   .media-grid .wide { grid-column: span 2; }
   .book-wrap { grid-template-columns: 1fr; }
@@ -619,11 +569,9 @@ footer { background: var(--black-soft); border-top: 1px solid var(--line); paddi
   .nav-links { position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: var(--black); flex-direction: column; justify-content: flex-start; padding: 40px 28px; gap: 26px; transform: translateX(100%); transition: transform .3s ease; z-index: 150; }
   .nav-links.open { transform: translateX(0); }
   .nav-toggle { display: flex; }
-  .card-grid, .card-grid.two { grid-template-columns: 1fr; }
   .media-grid { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 34px; }
-  .show-row { grid-template-columns: 70px 1fr; }
   .slot-btn { flex: 1 1 100%; }
   .hero-inner { min-height: 520px; padding: 110px 24px 40px; background-position: center 22%; }
 }
